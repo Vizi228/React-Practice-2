@@ -1,0 +1,48 @@
+.Header{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #EAEAEA;
+  padding: 35px 0 45px 0; 
+  .logo{
+    display: flex;
+    align-items: center;
+    h2{
+      font-size: 20px;
+      color: #000;
+    }
+    p{
+      color: #9D9D9D;
+      font-size: 14px;
+    }
+    img{
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+    }
+  }
+  .navigation{
+    display: flex;
+    align-items: center;
+  }
+  .cart{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    cursor: pointer;
+    span{
+      color: #000;
+    }
+    img{
+      margin-right: 10px;
+    }
+  }
+  .favorite{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
+  .profile{
+    display: flex;
+    align-items: center;
+  }
+}

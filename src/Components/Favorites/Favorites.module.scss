@@ -1,0 +1,76 @@
+.Main{
+  .title{
+    display: flex;
+    align-items: center;
+    margin-top: 45px;
+    h2{
+      font-size: 32px;
+      font-weight: 700;
+    }
+  }
+  .image{
+    display: flex;
+    align-items: center;
+    img{
+      margin-right: 20px;
+    }
+  }
+  .cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-height: 500px;
+  }
+  .states{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 700px;
+    .img{
+      width: 70px;
+      height: 70px;
+    }
+    h3{
+      font-size: 24px;
+      font-weight: 600;
+      padding-top: 30px;
+    }
+    span{
+      color: rgba($color: #000000, $alpha: 0.5);
+      padding: 20px 0 0 0 !important;
+    }
+    .icon{
+      left: 30px;
+      transform: rotate(180deg);
+      width: 14px !important;
+      height: 12px !important;
+    }
+  } 
+  .greenButton{
+    margin-top: 65px !important;
+    width: 245px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9DD458;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    position: relative;
+    font-weight: 600;
+    padding: 15px 0;
+    
+    span{
+      flex: 1;
+      color: #fff;
+      padding: 0 !important;
+    }
+    img{
+      right: 20px;
+      position: absolute;
+    }
+  }  
+}
+

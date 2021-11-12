@@ -1,0 +1,40 @@
+.Shop{
+  padding-bottom: 40px;
+  .head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 40px 0 0 0;
+    .search{
+      display: flex;
+      align-items: center;
+      border: 1px solid #F3F3F3;
+      border-radius: 10px;
+      padding: 12px 15px;
+      input{
+        margin-left: 10px !important;
+        outline: none;
+        border: none;
+        
+        &::placeholder{
+          color: #C4C4C4;
+        }
+      }
+      img{
+        cursor: pointer;
+      }
+    }
+    .remove{
+      position: absolute;
+      top: 5px;
+      right: 0;
+    }
+  }
+  .cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+}
