@@ -1,5 +1,5 @@
 import profCard from './ProfileCard.module.scss'
-
+import { observer } from 'mobx-react-lite';
 
 const ProfileCard = ({ title, image, price }) =>{
   
@@ -18,4 +18,4 @@ const ProfileCard = ({ title, image, price }) =>{
     </div>
   )
 }
-export default ProfileCard;
+export default observer(ProfileCard);

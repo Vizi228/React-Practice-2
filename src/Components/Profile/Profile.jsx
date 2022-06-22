@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import profile from './Profile.module.scss'
 import ProfileCard from './ProfileCard/ProfileCard';
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+import { AppContext } from '../../Context';
 
-
-const Profile = (props) => {
+const Profile = () => {
   
+  const { profile } = useContext(AppContext)
+
   return (
     <div className={profile.Main}>
          <div className={profile.title}>
@@ -12,8 +16,9 @@ const Profile = (props) => {
           <h2>Мои покупки</h2>
         </div>
         <div className={profile.cards}>
-          {props.state.length > 0 ? 
-            props.state.map((obj) => <ProfileCard image ={ obj.image } title = {obj.title} price = {obj.price} />) 
+          
+          {profile.items.length > 0 ? 
+            profile.items.map((obj) => <ProfileCard key={obj.id} image ={ obj.image } title = {obj.title} price = {obj.price} />) 
             : 
             <div className={profile.emptyProfile}>
               У вас нету заказов!</div>}
@@ -22,4 +27,4 @@ const Profile = (props) => {
     </div>
   )
 }
-export default Profile;
+export default observer(Profile);

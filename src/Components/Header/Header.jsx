@@ -1,11 +1,12 @@
-import { useBurgerCard } from '../Hooks/burgerCard';
 import { Link } from 'react-router-dom';
 import header from './Header.module.scss'
-
+import { observer } from "mobx-react-lite";
+import { useContext } from 'react';
+import { AppContext } from '../../Context';
 
 const Header = (props) =>{
   
-  const { totalPrice } = useBurgerCard();
+  const { totalPrice } = useContext(AppContext);
   
   return (
     <div className={header.Header}>
@@ -39,4 +40,4 @@ const Header = (props) =>{
           </div>
   )
 }
-export default Header;
+export default observer(Header);

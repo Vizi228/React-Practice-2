@@ -1,15 +1,20 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import FavoriteCard from "./FavoriteCard/FavoriteCard";
 import favorites from "./Favorites.module.scss";
-import { AppContext } from "../../App";
+import { AppContext } from "../../Context";
+import { observer } from "mobx-react-lite";
 
+const Favorites = () => {
+  const { favorite } = useContext(AppContext);
 
-const Favorites = ({ removeInFavorite }) => {
-  const {favorite} = useContext(AppContext);
+  const removeInFavorite = useCallback((obj) => {
+    favorite.onClickFavorite(obj)
+  }, [favorite])
+
   return (
     <div className={favorites.Main}>
-      {favorite.length > 0 ? (
+      {favorite.items.length > 0 ? (
         <div className={favorites.wrapper}>
           <div className={favorites.title}>
             <div className={favorites.image}>
@@ -20,7 +25,7 @@ const Favorites = ({ removeInFavorite }) => {
             <h2>Мои закладки</h2>
           </div>
           <div className={favorites.cards}>
-            {favorite.map((obj) => (
+            {favorite.items.map((obj) => (
               <FavoriteCard
                 key={obj.id}
                 title={obj.title}
@@ -59,4 +64,4 @@ const Favorites = ({ removeInFavorite }) => {
     </div>
   );
 };
-export default Favorites;
+export default observer(Favorites);

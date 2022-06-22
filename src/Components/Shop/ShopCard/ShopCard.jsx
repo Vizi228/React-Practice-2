@@ -1,23 +1,19 @@
 import { useContext, useState } from "react";
 import card from "./ShopCard.module.scss";
 import ContentLoader from "react-content-loader"
-import { AppContext } from "../../../App";
+import { AppContext } from "../../../Context";
+import { observer } from "mobx-react-lite";
 
-const ShopCard = ({image, title, price, id, UID, onClickPlus, onClickFavorite, loading=false }) => {
+const ShopCard = ({image, title, price, id, UID, loading=false }) => {
    
-  
-  const [favorite, setFavorite] = useState(true)
-
+  const { cart, isItemAdded, favorite, isItemFavorite } = useContext(AppContext)
   let onPlus = () => {
-    onClickPlus({image, title, price, id, UID, isItemAdded});
+    cart.addToCart({image, title, price, id, UID, isItemAdded});
     isItemAdded(UID);
   }
   let onFavorite = () => {
-    onClickFavorite({image, title, price, id, UID});
-    setFavorite(!favorite);
+    favorite.onClickFavorite({image, title, price, id, UID});
   }
-  const { isItemAdded } = useContext(AppContext);
-  const { isItemFavorite } = useContext(AppContext);
   return (     
         <div className={card.card}>
           {
@@ -56,4 +52,4 @@ const ShopCard = ({image, title, price, id, UID, onClickPlus, onClickFavorite, l
       
   );
 };
-export default ShopCard;
+export default observer(ShopCard);

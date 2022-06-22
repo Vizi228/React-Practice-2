@@ -1,12 +1,22 @@
 import burger from "./Burger.module.scss";
 import BurgerCard from "./BurgerCard/BurgerCard";
-import { useBurgerCard } from "../Hooks/burgerCard";
+import { useCallback, useContext } from "react";
+import { AppContext } from "../../Context";
+import { observer } from "mobx-react-lite";
 
 
+const Burger = ({ onClickExit, infoBurger}) => {
+  
+  const { cart, profile, totalPrice } = useContext(AppContext)
 
-const Burger = ({ state, onClickExit, removeInCart, purchaseItem, infoBurger}) => {
- 
-  const { totalPrice } = useBurgerCard();
+  const removeInCart = useCallback((obj) => {
+    cart.removeToCart(obj)
+  }, [cart])
+
+  const purchaseItem = () => {
+    profile.purchaseItem(cart.carts);
+    cart.cleanCart();
+  }
 
   return (
     <div className={`${burger.Burger} ${infoBurger ? undefined : burger.visibility}`}>
@@ -15,10 +25,10 @@ const Burger = ({ state, onClickExit, removeInCart, purchaseItem, infoBurger}) =
           <h2>Корзина</h2>
           <img onClick={onClickExit} src="../../image/icons/add.svg" alt="" />
         </div>
-        {state.length > 0 ? (
+        {cart.carts.length > 0 ? (
           <>
             <div className={burger.cards}>
-              {state.map((obj) => (
+              {cart.carts.map((obj) => (
                 <BurgerCard
                   key={obj.id}
                   title={obj.title}
@@ -34,12 +44,12 @@ const Burger = ({ state, onClickExit, removeInCart, purchaseItem, infoBurger}) =
                 <li>
                   <span>Итого:</span>
                   <div></div>
-                  <h3>{ totalPrice } руб.</h3>
+                  <h3>{totalPrice} руб.</h3>
                 </li>
                 <li>
                   <span>Налог 5%:</span>
                   <div></div>
-                  <h3>{ totalPrice / 20 } руб.</h3>
+                  <h3>{totalPrice / 20} руб.</h3>
                 </li>
               </ul>
               <button
@@ -68,4 +78,4 @@ const Burger = ({ state, onClickExit, removeInCart, purchaseItem, infoBurger}) =
     </div>
   );
 };
-export default Burger;
+export default observer(Burger);

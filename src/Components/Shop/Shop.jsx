@@ -1,10 +1,8 @@
-
 import shop from "./Shop.module.scss";
 import ShopCard from "./ShopCard/ShopCard";
-
+import { observer } from "mobx-react-lite";
 
 const Shop = ({
-  onClickAdd,
   state,
   searchText,
   getSearchText,
@@ -27,7 +25,6 @@ const Shop = ({
       <ShopCard
         key={obj && obj.id}
         onClickFavorite={(par) => onClickFavorite(par)}
-        onClickPlus={(par) => onClickAdd(par)}
         loading={isLoading}
         {...obj}
       />
@@ -60,4 +57,4 @@ const Shop = ({
     </div>
   );
 };
-export default Shop;
+export default observer(Shop);

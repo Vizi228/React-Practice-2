@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import favCard from './FavoriteCard.module.scss'
+import { observer } from "mobx-react-lite";
 
 
 const FavoriteCard = ({image, title, price, id, removeInFavorite, favorited, UID}) =>{
@@ -27,4 +28,4 @@ const FavoriteCard = ({image, title, price, id, removeInFavorite, favorited, UID
     </div>
   )
 }
-export default FavoriteCard;
+export default observer(FavoriteCard);

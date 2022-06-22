@@ -1,4 +1,5 @@
 import burger from "./BurgerCard.module.scss";
+import { observer } from "mobx-react-lite";
 
 const BurgerCard = ({title, price, image, obj, removeItem}) => {
   return (
@@ -16,4 +17,4 @@ const BurgerCard = ({title, price, image, obj, removeItem}) => {
     </div>
   );
 };
-export default BurgerCard;
+export default observer(BurgerCard);
